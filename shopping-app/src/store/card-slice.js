@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { uiActions } from "./ui-slice";
 
 const cardSlice = createSlice({
   name: "card",
@@ -7,15 +6,15 @@ const cardSlice = createSlice({
     itemsList: [],
     totalQuantity: 0,
     showCard: false,
-    changed:false,
+    changed: false,
   },
   reducers: {
-    replaceData(state, action){
-      state.totalQuantity = action.payload.totalPrice;
-      state.itemsList = action.payload.itemsList
+    replaceData(state, action) {
+      // state.totalQuantity = action.payload.totalQuantity;
+      // state.itemsList = action.payload.itemsList
     },
     addToCard(state, action) {
-      state.changed = true
+      state.changed = true;
       const newItem = action.payload;
       //to check if item is already available
       const existingItem = state.itemsList.find(
@@ -24,7 +23,7 @@ const cardSlice = createSlice({
 
       if (existingItem) {
         existingItem.quantity++;
-        existingItem.price += newItem.price;
+        existingItem.totalPrice += newItem.price;
       } else {
         state.itemsList.push({
           id: newItem.id,
@@ -33,27 +32,26 @@ const cardSlice = createSlice({
           totalPrice: newItem.price,
           name: newItem.name,
         });
-        state.totalQuantity++;
       }
+      state.totalQuantity++;
     },
     removeFromCard(state, action) {
-      state.changed = true
+      state.changed = true;
       const id = action.payload;
       const existingItem = state.itemsList.find((item) => item.id === id);
       if (existingItem.quantity === 1) {
         state.itemsList = state.itemsList.filter((item) => item.id !== id);
-        state.totalQuantity--;
       } else {
         existingItem.quantity--;
         existingItem.totalPrice -= existingItem.price;
       }
+      state.totalQuantity--;
     },
     setShowCard(state) {
       state.showCard = !state.showCard;
     },
   },
 });
-
 
 export const cardActions = cardSlice.actions;
 

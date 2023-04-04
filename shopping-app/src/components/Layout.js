@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Products from "./Products";
-import CartItems from "./CartItems";
+import CardItems from "./CardItems";
 import "./Layout.css";
 import { useSelector } from "react-redux";
 const Layout = () => {
@@ -18,7 +18,7 @@ const Layout = () => {
       <div className="layout">
         <Header />
         <Products />
-        {showCard && <CartItems />}
+        {showCard && <CardItems />}
         <div className="total-price">
           <h3>Total: ${total}</h3>
           <button className="orderBtn">Place Order</button>

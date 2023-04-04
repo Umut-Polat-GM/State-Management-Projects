@@ -4,13 +4,13 @@ ul {
   li {
     padding: 10px;
   }
-  .cartIcon h3 {
+  .cardIcon h3 {
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 10px;
     cursor: pointer;
   }
-  .cart-container {
+  .card-container {
     border: 1px solid black;
     border-radius: 10px;
     margin: 20px;
@@ -20,7 +20,7 @@ ul {
     overflow-x: hidden;
   }
   
-  .cartItem {
+  .cardItem {
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -31,7 +31,7 @@ ul {
     background: #2f3c7e;
     color: #fbeaeb;
   }
-  .cart-actions {
+  .card-actions {
     color: white;
     font-size: 20px;
     width: 50px;

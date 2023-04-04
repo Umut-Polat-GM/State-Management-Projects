@@ -1,5 +1,5 @@
 import React from "react";
-import Cart from "./Cart";
+import Card from "./Card";
 import "./Header.css";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/auth-slice";
@@ -21,7 +21,7 @@ const Header = () => {
             </h2>
           </li>
           <li>
-            <Cart />
+            <Card />
           </li>
           <li>
             <button onClick={logoutHandler} className="logout-btn">

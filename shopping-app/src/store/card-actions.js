@@ -13,7 +13,8 @@ export const fetchData = () => {
 
     try {
       const cardData = await fetchHandler();
-      dispatch(cardActions.replaceData(cardData));
+      console.log(cardData);
+      dispatch(cardActions.replaceData(cardActions));
     } catch (err) {
       dispatch(
         uiActions.showNotification({
@@ -35,27 +36,29 @@ export const sendCardData = (card) => {
         type: "warning",
       })
     );
-    try {
-      const sendRequest = async () => {
-        //Send state as Sending request
 
-        const res = await fetch(
-          "https://redux-http-61ff6-default-rtdb.firebaseio.com/cardItems.json",
-          {
-            method: "PUT",
-            body: JSON.stringify(card),
-          }
-        );
-        const data = await res.json();
-        //Send state as Request is succesful
-        dispatch(
-          uiActions.showNotification({
-            open: true,
-            message: "Sent Request To Datanase Success",
-            type: "success",
-          })
-        );
-      };
+    const sendRequest = async () => {
+      //Send state as Sending request
+
+      const res = await fetch(
+        "https://redux-http-61ff6-default-rtdb.firebaseio.com/cardItems.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(card),
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+      //Send state as Request is succesful
+      dispatch(
+        uiActions.showNotification({
+          open: true,
+          message: "Sent Request To Datanase Success",
+          type: "success",
+        })
+      );
+    };
+    try {
       await sendRequest();
     } catch (err) {
       dispatch(
